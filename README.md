@@ -22,6 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Handle dynamic errors by input
 - [x] Configure zod to validate input values
 - [ ] Add mask at phone input
+- [ ] Block submit button until all inputs are filled correctly
 
 
 ## Deploy on Vercel
