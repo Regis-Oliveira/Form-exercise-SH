@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='mx-auto flex flex-1 justify-center items-center h-screen
-      bg-black'      
+      bg-black'
       >
         <Link 
           href="/register" 

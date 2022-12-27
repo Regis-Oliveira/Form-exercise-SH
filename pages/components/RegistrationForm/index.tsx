@@ -1,20 +1,22 @@
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
-import { useState } from 'react';
+
+import { normalizePhoneNumber } from '../../../utils/masks';
 
 const claimUserFormSchema = z.object({
   firstName: z
     .string()
     .min(3, { message: 'Name required' })
-    .regex(/^([a-z\\-]+)$/, { message: 'Only letters allowed'}),
+    .regex(/^([a-z])/i, { message: 'Only letters allowed'}),
   lastName: z.string()
     .min(3, { message: 'Last name required' })
-    .regex(/^([a-z\\-]+)$/i, { message: 'Only letters allowed'}),
+    .regex(/^([a-z]+)/i, { message: 'Only letters allowed'}),
   phone: z.string()
-    .min(10)
-    .regex(/^(\(\d{2,}\) \d{4,}\-\d{4})$/i),
+    .min(15, { message: 'Phone is required' }),
     email: z.string()
     .min(1, { message: "Email is required" })
     .email({ message: 'Must be a valid email' })
@@ -22,28 +24,36 @@ const claimUserFormSchema = z.object({
 
 type ClaimUserFormData = z.infer<typeof claimUserFormSchema>;
 
-
 export default function RegistrationForm() {
-  const [enable, setEnable] = useState(true);
-
   const { 
     handleSubmit, 
-    register, 
-    formState: { errors } 
+    register,
+    watch,
+    setValue,
+    reset,
+    formState: { errors, isDirty, isValid } 
   } = useForm<ClaimUserFormData>({
     resolver: zodResolver(claimUserFormSchema)
   });
 
+  const phoneValue = watch('phone');
+
   async function handleSubmitUserForm(data: ClaimUserFormData) {
-    console.log("data:", data);
+    console.log("formData:", data);
+    reset();
   }
 
+  useEffect(() => {
+    setValue('phone', normalizePhoneNumber(phoneValue))
+  }, [phoneValue, setValue]);
+  
   return (
     <div className='bg-gray-100 flex justify-center items-center flex-row mx-auto 
-    h-full w-auto'>
+      h-full w-auto sm:min-h-[576px]'
+    >
       <form 
         onSubmit={handleSubmit(handleSubmitUserForm)}
-        className="flex flex-col justify-between w-full h-full min-w-[360px] mx-14"
+        className="flex flex-col justify-between w-80 h-full sm:min-w-[420px] md:mx-14 mx-6"
       >
         <span className='font-sans font-bold text-2xl my-6'>
           Registration
@@ -84,8 +94,10 @@ export default function RegistrationForm() {
         </span>
         <input
           className='input-form'
-          type='number' 
-          placeholder='(00)00000-0000'
+          type='tel' 
+          placeholder='(00) 00000-0000'
+          maxLength={15}
+          inputMode='numeric'
           {...register('phone')}
         />
         {errors.phone?.message && 
@@ -112,20 +124,21 @@ export default function RegistrationForm() {
         <div className='flex w-full justify-between my-6'>
           <Link 
             href='/'
-            className='bg-gray-200 py-2 px-5 rounded w-28 text-base font-bold text-center text-black 
-            border border-gray-200 active:border-gray-500 active:bg-gray-100 focus:outline-gray-300
-            hover:bg-gray-300 transition-colors'  
+            className='bg-gray-300 py-2 px-5 rounded w-28 text-base font-bold text-center text-gray-700 
+            border border-gray-300 active:border-gray-500 active:bg-gray-100 focus:outline-gray-300
+            hover:bg-gray-400 transition-colors'  
           >
             Go back
           </Link>
-
+        
           <button
             type='submit'
-            disabled={false}
+            disabled={!isDirty || !isValid}
             className='bg-gray-500 py-2 px-5 rounded w-28 text-base font-bold 
               text-center text-white hover:cursor-pointer border border-gray-200
               active:border-gray-500 active:bg-gray-100 focus:outline-gray-500
-              hover:bg-gray-600 transition-colors disabled:cursor-not-allowed'
+              hover:bg-gray-600 transition-colors disabled:cursor-not-allowed 
+              disabled:hover:bg-gray-500 disabled:opacity-40'
           >
             Proceed
           </button>

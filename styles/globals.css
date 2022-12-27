@@ -4,7 +4,7 @@
 
 @layer components {
   .input-form {
-    @apply bg-gray-100 py-2 pl-3 text-gray-800 text-base rounded-md border border-gray-200
+    @apply bg-gray-200 py-2 pl-3 text-gray-800 text-base rounded-md border border-gray-200
     active:border-gray-500 active:bg-gray-100 focus:outline-gray-300;
   }
 }
