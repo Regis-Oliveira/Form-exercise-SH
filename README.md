@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## App
+
+<img src="assets/readmeFiles/Screenshot.png" alt="Img form register screen" />
+
+<video width="800" height="600" autoplay loop controls>
+  <source src="assets/readmeFiles/video.mp4" type="video/mp4">
+</video>
+
+</br>
+
 ## Getting Started
 
 First, run the development server:
@@ -11,6 +21,19 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+</br>
+
+## Technologies
+
+- [NextJS](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [React-Hook-Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+- [Tailwind](https://tailwindcss.com/)
+- [Eslint](https://eslint.org/)
+
+</br>
 
 ## Tasks
 - [x] Configure tailwind on the project
@@ -25,6 +48,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Block submit button until all inputs are filled correctly
 - [x] Reset fields after submit
 
+</br>
 
 ## Deploy on Vercel
 
