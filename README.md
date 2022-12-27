@@ -10,7 +10,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 </br>
 
-## Getting Started
+## :black_circle: Getting Started
 
 First, run the development server:
 
@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 </br>
 
-## Technologies
+## :large_blue_circle: Technologies
 
 - [NextJS](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
@@ -35,7 +35,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 </br>
 
-## Tasks
+## :bookmark_tabs: Tasks
 - [x] Configure tailwind on the project
 - [x] Add free image asset to represent the suggested layout
 - [x] Config head and project title
