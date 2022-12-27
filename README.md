@@ -21,8 +21,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Configure react-hhok-form to control inputs
 - [x] Handle dynamic errors by input
 - [x] Configure zod to validate input values
-- [ ] Add mask at phone input
-- [ ] Block submit button until all inputs are filled correctly
+- [x] Add mask at phone input
+- [x] Block submit button until all inputs are filled correctly
+- [x] Reset fields after submit
 
 
 ## Deploy on Vercel
